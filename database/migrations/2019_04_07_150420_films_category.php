@@ -13,7 +13,7 @@ class FilmsCategory extends Migration
      */
     public function up()
     {
-        Schema::create('films_category',function (Blueprint $table){
+        Schema::table('films_category',function (Blueprint $table){
             $table->increments('id');
             $table->string('category');
             $table->timestamps();
