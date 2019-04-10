@@ -12,21 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
-Auth::routes();
+Route::get('/profile','ProfileController@index')->name('profile');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/favorites','MyFavoritesController@index')->name('my_favorites');
 
-Auth::routes();
+Route::get('MyFavoritesController@delete')->name('delete_my_favorites');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('ProfileController@update')->name('update_profile');

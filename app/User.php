@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'tel', 'email', 'password',
+        'name','tel', 'email', 'password',
     ];
 
     /**
@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function films()
+    {
+        return $this->belongsTo('App\FavoritesFilms');
+    }
 }
