@@ -22,3 +22,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/profile','ProfileController@index')->name('profile');
 
 Route::get('/favorites','MyFavoritesController@index')->name('my_favorites');
+
+Route::get('MyFavoritesController@delete')->name('delete_my_favorites');
+
+Route::get('ProfileController@update')->name('update_profile');

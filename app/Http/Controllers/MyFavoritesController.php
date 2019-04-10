@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\FavoritesFilms;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MyFavoritesController extends Controller
 {
@@ -24,5 +26,8 @@ class MyFavoritesController extends Controller
     public function index()
     {
         return view('my_favorites');
+    }
+    public  function delete(Request $request){
+       FavoritesFilms::get($request->name)->where('user_id',Auth::user()->id)->detach();
     }
 }

@@ -20,7 +20,7 @@ class Films extends Migration
             $table->string('content');
             $table->longText('pictures');
             $table->string('url_to_trailer');
-            $table->unsignedInteger('category');
+            $table->unsignedInteger('films_category_id');
             $table->rememberToken();
             $table->timestamps();
         });

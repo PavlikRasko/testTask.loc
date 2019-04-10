@@ -23,23 +23,26 @@
             </div>
 
             <div class="col-md-10">
-                @foreach (\App\Films::all() as $item)
-                    @if(($item->category) == 2  )
+                @foreach (\App\FavoritesFilms::all() as $item)
+
                         <div class="card">
                             <div class="card-body row">
                                 <div class="col-md-3 justify-content-center">
-                                    <a href={{$item->url_to_trailer}}>
-                                        <img src={{$item->pictures}}></a>
+                                    <a href=''>
+                                        <img src=></a>
                                 </div>
-                                <div class="col-md-9">
-                                    <h3 class="font-italic" style="color: darkred; margin-bottom: 1px">{{$item->title}}</h3>
-                                    <small>{{$item->category}}</small>
-                                    <h6>{{$item->after_title}}</h6>
+                                <div class="col-md-8">
+                                    <h3 class="font-italic" style="color: darkred; margin-bottom: 1px"></h3>
+                                    <small></small>
+                                    <h6>{{$item->title}}</h6>
                                     <h6>{{$item->content}}</h6>
+                                </div>
+                                <div class="col-md-1">
+                                    <button name="{{$item->films_id}}" class="btn btn-outline-danger btn-sm" onclick="{{route('delete_my_favorites')}}">X</button>
                                 </div>
                             </div>
                         </div>
-                    @endif
+
                 @endforeach
             </div>
 

@@ -24,7 +24,7 @@
 
         <div class="col-md-10">
             @foreach (\App\Films::all() as $item)
-                @if(($item->category) == 2  )
+                @if(($item->films_category_id) == 1  )
             <div class="card">
             <div class="card-body row">
                 <div class="col-md-3 justify-content-center">
@@ -32,8 +32,8 @@
                         <img src={{$item->pictures}}></a>
                 </div>
                     <div class="col-md-9">
-                        <h3 class="font-italic" style="color: darkred; margin-bottom: 1px">{{$item->title}}</h3>
-                        <small>{{$item->category}}</small>
+                        <h3 class="font-italic"onclick="{{route('profile')}}" style="color: darkred; margin-bottom: 1px">{{$item->title}}</h3>
+                        <small>{{\App\FilmCategory::find($item->films_category_id)->category}}</small>
                         <h6>{{$item->after_title}}</h6>
                         <h6>{{$item->content}}</h6>
                     </div>

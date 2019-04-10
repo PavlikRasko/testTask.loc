@@ -19,6 +19,7 @@
                             <input class="input-group-text" name="tel" value="{{App\User::where('id',Auth::id())->value('tel')}}"><br>
                             <link>Email</link><br>
                             <input class="input-group-text" name="email" value="{{App\User::where('id',Auth::id())->value('email')}}"/>
+                            <input name="change" class="btn-lg bg-info btn btn-info  justify-content-xl-center "  style="margin-top: 25pt" type="submit" onclick="{{route('update_profile')}}" value="Save"/>
                         </form>
                     </div>
                 </div>
@@ -45,7 +46,7 @@
                 <div>
                     <form>
                         {{csrf_field()}}
-                        <input name="change" class="btn-lg bg-info btn btn-info  justify-content-xl-center "  style="margin-top: 25pt" type="submit" value="Save"/>
+                        <input name="change" class="btn-lg bg-info btn btn-info  justify-content-xl-center "  style="margin-top: 25pt" type="submit" onclick="{{route('update_profile')}}" value="Save"/>
                     </form>
                 </div>
             </div>

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class FilmCategory extends Model
 {
    protected $table='films_category';
-    public function category()
+    public function films()
     {
-        return $this->hasOne('App\Films','category');
+        return $this->belongsTo('App\Films');
     }
 }
