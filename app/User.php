@@ -41,4 +41,16 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\FavoritesFilms');
     }
+
+    public function favorite_films()
+    {
+        $favorite_films_ids = FavoritesFilms::where("user_id", $this->id)->get();
+        $favorite_films = collect();
+        foreach ($favorite_films_ids as $item) {
+            $favorite_films->push(Films::where("id", $item->films_id)->first());
+        }
+        return $favorite_films;
+    }
+
+
 }

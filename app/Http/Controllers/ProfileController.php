@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -27,6 +28,7 @@ class ProfileController extends Controller
     {
         return view('profile');
     }
+
     public function validation($request)
     {
         return $this->validate($request, [
@@ -35,19 +37,24 @@ class ProfileController extends Controller
             'tel' => 'required',
         ]);
     }
+
     public function update(Request $request)
     {
         $this->validation($request);
-        $contact = User::where('id',Auth::user()->id)->firstOrFail();
-        $contact->name = $request->name;
-        $contact->email = $request->email;
-        $contact->tel = $request->tel;
-        $contact->created_at = date("Y-m-d H:i:s");
-        $contact->updated_at = date("Y-m-d H:i:s");
-        if ($contact->save()) {
-            return $contact;
+
+        $user = User::where('id', Auth::user()->id)->firstOrFail();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->tel = $request->tel;
+
+        if (Hash::check($request->old_password, $user->password) && ($request->new_password == $request->confirm_new_password)) {
+            $user->password = Hash::make($request->new_password);
+        }
+
+        if ($user->save()) {
+            return 1;
         } else {
-            return abort(501);
+            return 0;
         }
     }
 }

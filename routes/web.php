@@ -12,17 +12,27 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('my_favorites');
 });
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/categories','HomeController@getByCategory');
+
 
 Route::get('/profile','ProfileController@index')->name('profile');
 
-Route::get('/favorites','MyFavoritesController@index')->name('my_favorites');
+Route::get('/','MyFavoritesController@index')->name('my_favorites');
 
-Route::get('MyFavoritesController@delete')->name('delete_my_favorites');
+Route::get('/favorite/categories','MyFavoritesController@getByCategory');
+Route::get('/favorite/add/{id}', 'MyFavoritesController@addToFavorites');
+Route::get('/favorite/remove/{id}', 'MyFavoritesController@delete');
 
-Route::get('ProfileController@update')->name('update_profile');
+Route::get('/film/{id}','FilmController@index')->name('film');
+
+
+Route::get('/profile/update','ProfileController@update')->name('update');
+
+
+Route::get('FilmController@addToFavorites')->name('addToFavorites');

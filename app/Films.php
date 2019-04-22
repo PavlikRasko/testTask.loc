@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\FilmCategory;
 
 class Films extends Model
 {
@@ -10,10 +11,11 @@ class Films extends Model
 
     public function filmscategory()
     {
-        return $this->hasOne('App\FilmCategory');
+        return $this->belongsTo('App\FilmCategory', "films_category_id");
     }
+
     public function favorites()
     {
-        return $this->belongsToMany('App\FavoritesFilms','favorites_films');
+        return $this->belongsToMany('App\FavoritesFilms','favorites_films','films_id');
     }
 }
